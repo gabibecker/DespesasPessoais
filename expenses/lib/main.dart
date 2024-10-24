@@ -11,18 +11,16 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final _transaction = [ Transaction(
-    id: 't1', 
-    title: 'Novo Tênis de Corrida',
-    value: 310.76,
-    date: DateTime.now()), 
+  final _transaction = [
     Transaction(
-    id: 't2', 
-    title: 'Conta de luz',
-    value: 86.76,
-    date: DateTime.now()),
-    ];
-  
+        id: 't1',
+        title: 'Novo Tênis de Corrida',
+        value: 310.76,
+        date: DateTime.now()),
+    Transaction(
+        id: 't2', title: 'Conta de luz', value: 86.76, date: DateTime.now()),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,21 +28,26 @@ class MyHomePage extends StatelessWidget {
         title: Text('Despesas Pessoais'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-        Container(
-          width: double.infinity,
-          child: Card(
-            color: Colors.deepPurple,
-            child: Text('Gráfico'),
-            elevation: 5,
-          ),
-        ),
-        Card(
-          child: Text('Lista de transações'),
-        )
-      ]),
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              child: Card(
+                color: Colors.deepPurple,
+                child: Text('Gráfico'),
+                elevation: 5,
+              ),
+            ),
+            Column(
+              children: _transaction.map((tr){
+                return Card(
+                  child: Text(tr.title)
+                );
+              }
+              ).toList()
+            )
+          ]),
     );
   }
 }
