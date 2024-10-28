@@ -4,35 +4,68 @@ import 'components/transaction_list.dart';
 import 'components/transaction_form.dart';
 import 'dart:math';
 
-
 main() => runApp(ExpensesApp());
 
 class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage());
+    final ThemeData tema = ThemeData();
+
+    return MaterialApp(
+      home: MyHomePage(),
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.pinkAccent[100],
+          secondary: Colors.white,
+        ),
+        textTheme: tema.textTheme.copyWith(
+          titleLarge: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          titleMedium: TextStyle(
+            fontFamily: 'Roboto',
+            fontSize: 16,
+            color: Colors.black,
+          ),
+        ),
+        appBarTheme: AppBarTheme(
+          color: Colors.pinkAccent[100],
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+          iconTheme: IconThemeData(
+          color: Colors.white, // Ajuste para os ícones do AppBar ficarem brancos
+        ),
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.pinkAccent[100],
+          foregroundColor: Colors.white
+        ),
+      ),
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-   final _transaction = [
+  final _transaction = [
     Transaction(
         id: 't1',
         title: 'Novo Tênis de Corrida',
         value: 310.76,
         date: DateTime.now()),
     Transaction(
-        id: 't2',
-         title: 'Conta #01',
-          value: 86.76,
-           date: DateTime.now()), 
+        id: 't2', title: 'Conta #01', value: 86.76, date: DateTime.now()),
   ];
 
   _addTransaction(String title, double value) {
@@ -51,10 +84,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
-      context: context,
-       builder: (ctx) {
+        context: context,
+        builder: (ctx) {
           return TransactionForm(_addTransaction);
-       });
+        });
   }
 
   @override
@@ -64,8 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Despesas Pessoais'),
         actions: <Widget>[
           IconButton(
-            onPressed: () => _openTransactionFormModal(context),
-             icon: Icon(Icons.add))
+              onPressed: () => _openTransactionFormModal(context),
+              icon: Icon(Icons.add))
         ],
       ),
       body: SingleChildScrollView(
@@ -83,12 +116,11 @@ class _MyHomePageState extends State<MyHomePage> {
               Transactionlist(_transaction),
             ]),
       ),
-      floatingActionButton: 
-      FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-          onPressed: () => _openTransactionFormModal(context),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        onPressed: () => _openTransactionFormModal(context),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
