@@ -41,10 +41,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: title,
         value: value,
         date: DateTime.now());
-
     setState(() {
       _transaction.add(newTransaction);
     });
+
+    Navigator.of(context).pop(); //pop -fechar o primeiro item da pilha
+    //ou seja, fechar o bottomsheet
   }
 
   _openTransactionFormModal(BuildContext context) {
