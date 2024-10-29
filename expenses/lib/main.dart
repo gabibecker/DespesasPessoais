@@ -16,7 +16,7 @@ class ExpensesApp extends StatelessWidget {
       home: MyHomePage(),
       theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
-          primary: Colors.pinkAccent[100],
+          primary: const Color(0xFF81004B),
           secondary: Colors.black,
         ),
         textTheme: tema.textTheme.copyWith(
@@ -24,7 +24,7 @@ class ExpensesApp extends StatelessWidget {
             fontFamily: 'OpenSans',
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: const Color(0xFF81004B),
           ),
           titleMedium: TextStyle(
             fontFamily: 'Roboto',
@@ -33,7 +33,7 @@ class ExpensesApp extends StatelessWidget {
           ),
         ),
         appBarTheme: AppBarTheme(
-          color: Colors.pinkAccent[100],
+          color: const Color(0xFF81004B),
           titleTextStyle: TextStyle(
             fontFamily: 'OpenSans',
             fontSize: 22,
@@ -45,7 +45,7 @@ class ExpensesApp extends StatelessWidget {
         ),
         ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Colors.pinkAccent[100],
+          backgroundColor: const Color(0xFF81004B),
           foregroundColor: Colors.white
         ),
       ),
