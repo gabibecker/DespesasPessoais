@@ -45,7 +45,7 @@ class Chart extends StatelessWidget {
           return ChartBar(
             tr['day'].toString(),
             tr['value'] as double,
-            0,
+            0.3,
             );
         }).toList(),
       ),
